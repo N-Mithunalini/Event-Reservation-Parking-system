@@ -17,7 +17,6 @@ public abstract class ApiControllerBase : ControllerBase
     }
 
     protected bool IsAdmin => User.IsInRole("Admin");
-
     protected void EnsureOwnerOrAdmin(int customerId)
     {
         if (IsAdmin) return;
