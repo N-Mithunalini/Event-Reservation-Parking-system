@@ -1,4 +1,4 @@
-namespace EventParkingReservationSystem.Models;
+﻿namespace EventParkingReservationSystem.Models;
 
 public class BookingSeat
 {
