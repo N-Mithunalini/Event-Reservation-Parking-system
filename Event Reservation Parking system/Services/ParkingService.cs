@@ -1,5 +1,51 @@
+using EventParkingReservationSystem.DTOs;
+using EventParkingReservationSystem.IRepositories;
+using EventParkingReservationSystem.IServices;
+using EventParkingReservationSystem.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace EventParkingReservationSystem.Services;
 
-public class ParkingService
+public class ParkingService : IParkingService
 {
+    private readonly IParkingRepository _parking;
+    private readonly IEventRepository _events;
+    public ParkingService(IParkingRepository parking, IEventRepository events) { _parking = parking; _events = events; }
+
+    public async Task<object> GetByEventAsync(int eventId) => await _parking.GetByEventAsync(eventId);
+
+    public async Task<object> GenerateAsync(int eventId, ParkingLayoutCreateDto dto)
+    {
+        _ = await _events.GetByIdAsync(eventId) ?? throw new KeyNotFoundException("Event not found.");
+        if ((await _parking.GetByEventAsync(eventId)).Count > 0) throw new InvalidOperationException("Parking layout already exists.");
+        var slots = Enumerable.Range(1, dto.SlotCount).Select(i => new ParkingSlot
+        {
+            EventId = eventId,
+            SlotNumber = $"P{i:00}",
+            Zone = dto.Zone,
+            Fee = dto.Fee,
+            Status = "Available"
+        }).ToList();
+        await _parking.AddRangeAsync(slots); await _parking.SaveAsync(); return slots;
+    }
+
+    public async Task<object> UpdateAsync(int eventId, int slotId, ParkingSlotUpdateDto dto)
+    {
+        var slot = await _parking.GetByIdAsync(slotId) ?? throw new KeyNotFoundException("Parking slot not found.");
+        if (slot.EventId != eventId) throw new InvalidOperationException("Parking slot does not belong to this event.");
+        if (await _parking.IsReservedAsync(slotId)) throw new InvalidOperationException("Reserved parking slot cannot be changed.");
+        slot.SlotNumber = dto.SlotNumber; slot.Zone = dto.Zone; slot.Fee = dto.Fee; slot.Status = dto.Status;
+        await _parking.SaveAsync(); return slot;
+    }
+
+    public async Task<object> DeleteAsync(int eventId, int slotId)
+    {
+        var slot = await _parking.GetByIdAsync(slotId) ?? throw new KeyNotFoundException("Parking slot not found.");
+        if (slot.EventId != eventId) throw new InvalidOperationException("Parking slot does not belong to this event.");
+        if (await _parking.IsReservedAsync(slotId)) throw new InvalidOperationException("Reserved parking slot cannot be deleted.");
+        await _parking.DeleteAsync(slot); await _parking.SaveAsync(); return new { message = "Parking slot deleted." };
+    }
 }

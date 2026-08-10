@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>EventParking - Event Details</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css"
+          rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand"
+               href="index.html">
+                EventParking
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#nav"
+                    aria-controls="nav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div id="nav"
+                 class="collapse navbar-collapse">
+
+                <div class="navbar-nav ms-auto">
+
+                    <a class="nav-link"
+                       href="events.html">
+                        Events
+                    </a>
+
+                    <a class="nav-link"
+                       href="customer-dashboard.html">
+                        Dashboard
+                    </a>
+
+                    <a class="nav-link"
+                       href="my-bookings.html">
+                        Bookings
+                    </a>
+
+                    <a class="nav-link"
+                       href="notifications.html">
+                        Notifications
+                    </a>
+
+                    <a class="nav-link"
+                       href="payments.html">
+                        Payments
+                    </a>
+
+                    <a class="nav-link"
+                       href="admin.html">
+                        Admin
+                    </a>
+
+                    <a class="nav-link"
+                       href="login.html">
+                        Login
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ==================== EVENT DETAILS ==================== -->
+
+    <div class="container py-5">
+
+        <!-- Event Name -->
+
+        <h2 id="eventName"
+            class="page-title">
+            Event
+        </h2>
+
+
+        <!-- Event Information -->
+
+        <p id="eventInfo"
+           class="muted">
+        </p>
+
+
+        <!-- ==================== SEAT SELECTION ==================== -->
+
+        <div class="card p-4 mt-4">
+
+            <h5>
+                Select Seats
+            </h5>
+
+            <p class="muted">
+                Select one or more available seats.
+            </p>
+
+
+            <!-- Stage -->
+
+            <div class="text-center mb-4">
+
+                <div class="bg-dark text-white py-2 rounded">
+                    STAGE
+                </div>
+
+            </div>
+
+
+            <!-- Seat Grid -->
+
+            <div id="seatGrid"
+                 class="seat-grid">
+            </div>
+
+        </div>
+
+
+        <!-- ==================== PARKING SELECTION ==================== -->
+
+        <div class="card p-4 mt-4">
+
+            <h5>
+                Parking
+                <span class="text-muted">
+                    (Optional)
+                </span>
+            </h5>
+
+            <p class="muted">
+                You can select maximum one parking slot.
+            </p>
+
+
+            <div id="parkingGrid"
+                 class="parking-grid">
+            </div>
+
+        </div>
+
+
+        <!-- ==================== BOOKING SUMMARY ==================== -->
+
+        <div class="card p-4 mt-4">
+
+            <h5>
+                Booking Summary
+            </h5>
+
+            <hr>
+
+
+            <!-- Selected Seats -->
+
+            <div class="mb-2">
+
+                Selected seats:
+
+                <strong>
+                    <span id="selectedSeatsText">
+                        None
+                    </span>
+                </strong>
+
+            </div>
+
+
+            <!-- Total -->
+
+            <div class="mb-3">
+
+                Total:
+
+                <strong>
+                    Rs.
+                    <span id="totalText">
+                        0.00
+                    </span>
+                </strong>
+
+            </div>
+
+
+            <!-- Create Booking -->
+
+            <button id="bookBtn"
+                    type="button"
+                    class="btn btn-dark">
+
+                Create Booking
+
+            </button>
+
+        </div>
+
+
+        <!-- ==================== MESSAGE ==================== -->
+
+        <div id="bookingMsg"
+             class="mt-3">
+        </div>
+
+    </div>
+
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <!-- Common API -->
+    <script src="js/api.js"></script>
+
+    <!-- Seat + Parking Booking Logic -->
+    <script src="js/booking.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+
+</html>
