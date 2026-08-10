@@ -5,7 +5,8 @@ namespace EventParkingReservationSystem.Data;
 
 public class ApplicationDbContext : DbContext
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+    public ApplicationDbContext(
+        DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
     }
@@ -24,7 +25,6 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Unique indexes
         modelBuilder.Entity<Customer>()
             .HasIndex(x => x.Email)
             .IsUnique();
@@ -54,9 +54,71 @@ public class ApplicationDbContext : DbContext
             .IsUnique();
 
 
-        // Decimal precision
+        // Prevent SQL Server multiple cascade paths
+
+        modelBuilder.Entity<Booking>()
+            .HasOne(x => x.Event)
+            .WithMany(x => x.Bookings)
+            .HasForeignKey(x => x.EventId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<BookingSeat>()
+            .HasOne(x => x.Booking)
+            .WithMany(x => x.BookingSeats)
+            .HasForeignKey(x => x.BookingId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<BookingSeat>()
+            .HasOne(x => x.Event)
+            .WithMany()
+            .HasForeignKey(x => x.EventId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<BookingSeat>()
+            .HasOne(x => x.Seat)
+            .WithMany(x => x.BookingSeats)
+            .HasForeignKey(x => x.SeatId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<ParkingReservation>()
+            .HasOne(x => x.Booking)
+            .WithOne(x => x.ParkingReservation)
+            .HasForeignKey<ParkingReservation>(x => x.BookingId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<ParkingReservation>()
+            .HasOne(x => x.Event)
+            .WithMany()
+            .HasForeignKey(x => x.EventId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<ParkingReservation>()
+            .HasOne(x => x.ParkingSlot)
+            .WithMany(x => x.ParkingReservations)
+            .HasForeignKey(x => x.ParkingSlotId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+
         modelBuilder.Entity<Event>()
             .Property(x => x.TicketPrice)
             .HasPrecision(18, 2);
 
         modelBuilder.Entity<Event>()
+            .Property(x => x.ParkingFee)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<ParkingSlot>()
+            .Property(x => x.Fee)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<Payment>()
+            .Property(x => x.Amount)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<ParkingReservation>()
+            .Property(x => x.ReservedFee)
+            .HasPrecision(18, 2);
+
+        base.OnModelCreating(modelBuilder);
+    }
+}

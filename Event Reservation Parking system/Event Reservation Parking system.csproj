@@ -1,62 +1,43 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Event_Reservation_Parking_system</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>EventParkingReservationSystem</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" />
-    <Compile Include="obj\Debug\net8.0\Event Reservation Parking system.AssemblyInfo.cs" />
-    <Compile Include="obj\Debug\net8.0\Event Reservation Parking system.GlobalUsings.g.cs" />
-    <Compile Include="obj\Debug\net8.0\EventParkingReservationSystem.GlobalUsings.g.cs" />
-  </ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="Migrations\**" />
+	  <Content Remove="Migrations\**" />
+	  <EmbeddedResource Remove="Migrations\**" />
+	  <None Remove="Migrations\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="obj\Debug\net8.0\rpswa.dswa.cache.json" />
-    <Content Include="obj\Debug\net8.0\staticwebassets.removed.txt" />
-    <Content Include="obj\Event Reservation Parking system.csproj.nuget.dgspec.json" />
-    <Content Include="obj\EventParkingReservationSystem.csproj.nuget.dgspec.json" />
-    <Content Include="obj\project.assets.json" />
-    <Content Include="Properties\launchSettings.json" />
-  </ItemGroup>
+	<ItemGroup>
 
-  <ItemGroup>
-    <None Include="EventParkingReservationSystem.csproj" />
-    <None Include="obj\Debug\net8.0\Event Reservation Parking system.AssemblyInfoInputs.cache" />
-    <None Include="obj\Debug\net8.0\Event Reservation Parking system.assets.cache" />
-    <None Include="obj\Debug\net8.0\Event Reservation Parking system.csproj.AssemblyReference.cache" />
-    <None Include="obj\Debug\net8.0\Event Reservation Parking system.GeneratedMSBuildEditorConfig.editorconfig" />
-    <None Include="obj\Debug\net8.0\EventParkingReservationSystem.assets.cache" />
-    <None Include="obj\Event Reservation Parking system.csproj.nuget.g.props" />
-    <None Include="obj\Event Reservation Parking system.csproj.nuget.g.targets" />
-    <None Include="obj\EventParkingReservationSystem.csproj.nuget.g.props" />
-    <None Include="obj\EventParkingReservationSystem.csproj.nuget.g.targets" />
-    <None Include="obj\project.nuget.cache" />
-  </ItemGroup>
+		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
 
-  <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.19" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.19">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.19" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.19">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-  </ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.19" />
 
-  <ItemGroup>
-    <Folder Include="bin\Debug\net8.0\" />
-    <Folder Include="obj\Debug\net8.0\refint\" />
-    <Folder Include="obj\Debug\net8.0\ref\" />
-    <Folder Include="obj\Debug\net8.0\staticwebassets\" />
-  </ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.19">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>
+				runtime; build; native; contentfiles; analyzers; buildtransitive
+			</IncludeAssets>
+		</PackageReference>
+
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.19" />
+
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.19">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>
+				runtime; build; native; contentfiles; analyzers; buildtransitive
+			</IncludeAssets>
+		</PackageReference>
+
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+
+	</ItemGroup>
 
 </Project>
