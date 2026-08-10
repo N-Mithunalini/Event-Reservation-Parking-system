@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EventParkingReservationSystem.Data;
 
-namespace EventParkingReservationSystem.Data;
-
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -89,7 +87,7 @@ public class ApplicationDbContext : DbContext
         // Booking -> Payment
         modelBuilder.Entity<Booking>()
             .HasOne(x => x.Payment)
-            .WithOne(x => x.Booking)
+            .WithOne(static x => x.Booking)
             .HasForeignKey<Payment>(x => x.BookingId)
             .OnDelete(DeleteBehavior.Cascade);
 

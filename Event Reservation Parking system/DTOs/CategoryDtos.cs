@@ -1,5 +1,3 @@
 namespace EventParkingReservationSystem.DTOs;
 
-public record CategoryDto
-{
-}
+public record CategoryDto(string Name);

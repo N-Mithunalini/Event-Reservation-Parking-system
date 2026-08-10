@@ -1,5 +1,3 @@
 namespace EventParkingReservationSystem.DTOs;
 
-public record VenueDto
-{
-}
+public record VenueDto(string Name, string Address, int Capacity);
