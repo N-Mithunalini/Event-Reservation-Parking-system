@@ -2,8 +2,8 @@ using EventParkingReservationSystem.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EventParkingReservationSystem.IRepositories;
 
+namespace EventParkingReservationSystem.IRepositories;
 public interface IParkingRepository
 {
     Task<List<ParkingSlot>> GetByEventAsync(int eventId);

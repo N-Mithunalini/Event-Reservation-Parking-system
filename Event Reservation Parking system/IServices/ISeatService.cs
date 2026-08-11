@@ -1,6 +1,11 @@
 using EventParkingReservationSystem.DTOs;
 using System.Threading.Tasks;
 namespace EventParkingReservationSystem.IServices;
+
+
+
+namespace EventParkingReservationSystem.IServices;
+
 public interface ISeatService
 {
     Task<object> GetByEventAsync(int eventId);

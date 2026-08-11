@@ -1,3 +1,4 @@
+
 ﻿using System;
 
 namespace Event_Reservation_Parking_system.Models
@@ -8,3 +9,12 @@ namespace Event_Reservation_Parking_system.Models
     }
 }
 
+// ﻿namespace EventParkingReservationSystem.Models;
+
+// public class ConflictException : Exception
+// {
+//     public ConflictException(string message)
+//         : base(message)
+//     {
+//     }
+// }
