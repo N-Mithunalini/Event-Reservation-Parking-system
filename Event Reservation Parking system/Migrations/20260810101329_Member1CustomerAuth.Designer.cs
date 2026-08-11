@@ -4,16 +4,19 @@ using EventParkingReservationSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace EventParkingReservationSystem.MigrationsFinal
+namespace EventParkingReservationSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260810101329_Member1CustomerAuth")]
+    partial class Member1CustomerAuth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,12 +84,11 @@ namespace EventParkingReservationSystem.MigrationsFinal
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BookingId");
+
                     b.HasIndex("EventId");
 
                     b.HasIndex("SeatId");
-
-                    b.HasIndex("BookingId", "SeatId")
-                        .IsUnique();
 
                     b.ToTable("BookingSeats");
                 });
@@ -174,14 +176,12 @@ namespace EventParkingReservationSystem.MigrationsFinal
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("ParkingFee")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");
 
                     b.Property<decimal>("TicketPrice")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("VenueId")
@@ -259,7 +259,6 @@ namespace EventParkingReservationSystem.MigrationsFinal
                         .HasColumnType("int");
 
                     b.Property<decimal>("ReservedFee")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -286,12 +285,11 @@ namespace EventParkingReservationSystem.MigrationsFinal
                         .HasColumnType("int");
 
                     b.Property<decimal>("Fee")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("SlotNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -303,8 +301,7 @@ namespace EventParkingReservationSystem.MigrationsFinal
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId", "SlotNumber")
-                        .IsUnique();
+                    b.HasIndex("EventId");
 
                     b.ToTable("ParkingSlots");
                 });
@@ -318,7 +315,6 @@ namespace EventParkingReservationSystem.MigrationsFinal
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("BookingId")
@@ -359,7 +355,7 @@ namespace EventParkingReservationSystem.MigrationsFinal
 
                     b.Property<string>("SeatNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SeatType")
                         .IsRequired()
@@ -371,8 +367,7 @@ namespace EventParkingReservationSystem.MigrationsFinal
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId", "SeatNumber")
-                        .IsUnique();
+                    b.HasIndex("EventId");
 
                     b.ToTable("Seats");
                 });
@@ -412,7 +407,7 @@ namespace EventParkingReservationSystem.MigrationsFinal
                     b.HasOne("EventParkingReservationSystem.Models.Event", "Event")
                         .WithMany("Bookings")
                         .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
@@ -431,13 +426,13 @@ namespace EventParkingReservationSystem.MigrationsFinal
                     b.HasOne("EventParkingReservationSystem.Models.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EventParkingReservationSystem.Models.Seat", "Seat")
                         .WithMany("BookingSeats")
                         .HasForeignKey("SeatId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Booking");
@@ -488,13 +483,13 @@ namespace EventParkingReservationSystem.MigrationsFinal
                     b.HasOne("EventParkingReservationSystem.Models.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EventParkingReservationSystem.Models.ParkingSlot", "ParkingSlot")
                         .WithMany("ParkingReservations")
                         .HasForeignKey("ParkingSlotId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Booking");

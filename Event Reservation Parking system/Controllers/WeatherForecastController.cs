@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Event_Reservation_Parking_system.Controllers
+namespace EventParkingReservationSystem.Controllers
 {
     [ApiController]
     [Route("[controller]")]
