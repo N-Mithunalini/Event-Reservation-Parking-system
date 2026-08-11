@@ -1,9 +1,4 @@
 namespace EventParkingReservationSystem.DTOs;
 
-public record SeatMapCreateDto
-{
-}
-
-public record SeatUpdateDto
-{
-}
+public record SeatMapCreateDto(int Rows, int Columns);
+public record SeatUpdateDto(string SeatNumber, string? SeatType, string Status);
