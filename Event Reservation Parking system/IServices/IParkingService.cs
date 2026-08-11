@@ -1,8 +1,4 @@
 using EventParkingReservationSystem.DTOs;
-<<<<<<< HEAD
-=======
-namespace EventParkingReservationSystem.IServices;
->>>>>>> origin/master
 
 namespace EventParkingReservationSystem.IServices;
 public interface IParkingService

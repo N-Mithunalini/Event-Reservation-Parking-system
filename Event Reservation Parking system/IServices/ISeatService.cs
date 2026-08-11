@@ -1,10 +1,11 @@
 using EventParkingReservationSystem.DTOs;
-<<<<<<< HEAD
-=======
+using System.Threading.Tasks;
 namespace EventParkingReservationSystem.IServices;
->>>>>>> origin/master
+
+
 
 namespace EventParkingReservationSystem.IServices;
+
 public interface ISeatService
 {
     Task<object> GetByEventAsync(int eventId);
@@ -12,3 +13,4 @@ public interface ISeatService
     Task<object> UpdateAsync(int eventId, int seatId, SeatUpdateDto dto);
     Task<object> DeleteAsync(int eventId, int seatId);
 }
+

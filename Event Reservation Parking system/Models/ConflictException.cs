@@ -1,21 +1,20 @@
-<<<<<<< HEAD
+
 ﻿using System;
 
-namespace EventParkingReservationSystem.Models;
-
-public class ConflictException : Exception
+namespace Event_Reservation_Parking_system.Models
 {
-    public ConflictException(string message) : base(message) { }
-=======
-﻿namespace EventParkingReservationSystem.Models;
-
-public class ConflictException : Exception
-{
-    public ConflictException(string message)
-        : base(message)
+    public class ConflictException:Exception
     {
+        public ConflictException(string message) : base(message) { }
     }
 }
-//     public ConflictException(string message) : base(message) { }
->>>>>>> origin/master
-}
+
+// ﻿namespace EventParkingReservationSystem.Models;
+
+// public class ConflictException : Exception
+// {
+//     public ConflictException(string message)
+//         : base(message)
+//     {
+//     }
+// }
