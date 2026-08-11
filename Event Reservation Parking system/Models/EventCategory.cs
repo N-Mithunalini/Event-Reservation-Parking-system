@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace EventParkingReservationSystem.Models;
 
 public class EventCategory

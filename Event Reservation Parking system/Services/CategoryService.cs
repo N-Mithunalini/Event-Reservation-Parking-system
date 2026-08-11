@@ -2,6 +2,12 @@ using EventParkingReservationSystem.DTOs;
 using EventParkingReservationSystem.IRepositories;
 using EventParkingReservationSystem.IServices;
 using EventParkingReservationSystem.Models;
+<<<<<<< Updated upstream
+=======
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+>>>>>>> Stashed changes
 
 namespace EventParkingReservationSystem.Services;
 

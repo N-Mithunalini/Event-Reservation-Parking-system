@@ -1,4 +1,6 @@
-﻿namespace EventParkingReservationSystem.Models;
+﻿using System;
+
+namespace EventParkingReservationSystem.Models;
 
 public class ConflictException : Exception
 {

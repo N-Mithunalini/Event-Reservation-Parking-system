@@ -1,6 +1,16 @@
+<<<<<<< Updated upstream
 using EventParkingReservationSystem.Models;
 namespace EventParkingReservationSystem.IRepositories;
+=======
+>>>>>>> Stashed changes
 
+using EventParkingReservationSystem.Models;
+using global::EventParkingReservationSystem.Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace EventParkingReservationSystem.IRepositories;
 public interface IVenueRepository
 {
     Task<List<Venue>> GetAllAsync();

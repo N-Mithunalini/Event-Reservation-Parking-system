@@ -1,6 +1,10 @@
 using EventParkingReservationSystem.DTOs;
+<<<<<<< Updated upstream
+=======
+using System;
+using System.Threading.Tasks;
+>>>>>>> Stashed changes
 namespace EventParkingReservationSystem.IServices;
-
 public interface IEventService
 {
     Task<object> GetAllAsync(string? search, int? venueId, int? categoryId, DateTime? date);

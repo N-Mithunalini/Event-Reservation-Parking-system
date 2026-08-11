@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace EventParkingReservationSystem.Models;
 
 public class Event
@@ -18,4 +21,7 @@ public class Event
     public ICollection<ParkingSlot> ParkingSlots { get; set; } = new List<ParkingSlot>();
     public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes

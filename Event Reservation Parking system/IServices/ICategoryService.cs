@@ -1,6 +1,9 @@
 using EventParkingReservationSystem.DTOs;
+<<<<<<< Updated upstream
+=======
+using System.Threading.Tasks;
+>>>>>>> Stashed changes
 namespace EventParkingReservationSystem.IServices;
-
 public interface ICategoryService
 {
     Task<object> GetAllAsync();
