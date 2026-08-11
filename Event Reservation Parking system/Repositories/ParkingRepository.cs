@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 using EventParkingReservationSystem.Data.EventParkingReservationSystem.Data;
 using EventParkingReservationSystem.IRepositories;
 using EventParkingReservationSystem.Models;
+=======
+using EventParkingReservationSystem.Data;
+using EventParkingReservationSystem.IRepositories;
+using EventParkingReservationSystem.Models;
+using Microsoft.EntityFrameworkCore;
+>>>>>>> origin/master
 
 namespace EventParkingReservationSystem.Repositories;
 

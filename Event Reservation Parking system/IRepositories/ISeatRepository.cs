@@ -1,4 +1,8 @@
 using EventParkingReservationSystem.Models;
+<<<<<<< HEAD
+=======
+namespace EventParkingReservationSystem.IRepositories;
+>>>>>>> origin/master
 
 namespace EventParkingReservationSystem.IRepositories;
 public interface ISeatRepository

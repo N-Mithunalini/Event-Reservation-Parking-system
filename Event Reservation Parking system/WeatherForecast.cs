@@ -1,4 +1,4 @@
-namespace Event_Reservation_Parking_system
+namespace EventParkingReservationSystem
 {
     public class WeatherForecast
     {

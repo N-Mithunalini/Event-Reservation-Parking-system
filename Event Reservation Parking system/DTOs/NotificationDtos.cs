@@ -1,5 +1,2 @@
 namespace EventParkingReservationSystem.DTOs;
-
-public record NotificationCreateDto
-{
-}
+public record NotificationCreateDto(int CustomerId, string Message);
