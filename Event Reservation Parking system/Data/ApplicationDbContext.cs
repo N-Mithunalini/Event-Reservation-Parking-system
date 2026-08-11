@@ -5,8 +5,12 @@ namespace EventParkingReservationSystem.Data;
 
 public class ApplicationDbContext : DbContext
 {
+<<<<<<< HEAD
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+=======
     public ApplicationDbContext(
         DbContextOptions<ApplicationDbContext> options)
+>>>>>>> origin/master
         : base(options)
     {
     }
@@ -25,6 +29,10 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+<<<<<<< HEAD
+        // Unique indexes
+=======
+>>>>>>> origin/master
         modelBuilder.Entity<Customer>()
             .HasIndex(x => x.Email)
             .IsUnique();
@@ -54,6 +62,9 @@ public class ApplicationDbContext : DbContext
             .IsUnique();
 
 
+<<<<<<< HEAD
+        // Decimal precision
+=======
         // Prevent SQL Server multiple cascade paths
 
         modelBuilder.Entity<Booking>()
@@ -99,6 +110,7 @@ public class ApplicationDbContext : DbContext
             .OnDelete(DeleteBehavior.NoAction);
 
 
+>>>>>>> origin/master
         modelBuilder.Entity<Event>()
             .Property(x => x.TicketPrice)
             .HasPrecision(18, 2);
@@ -111,13 +123,56 @@ public class ApplicationDbContext : DbContext
             .Property(x => x.Fee)
             .HasPrecision(18, 2);
 
+<<<<<<< HEAD
+        modelBuilder.Entity<ParkingReservation>()
+            .Property(x => x.ReservedFee)
+            .HasPrecision(18, 2);
+
+=======
+>>>>>>> origin/master
         modelBuilder.Entity<Payment>()
             .Property(x => x.Amount)
             .HasPrecision(18, 2);
 
+<<<<<<< HEAD
+
+        // Booking -> ParkingReservation
+        modelBuilder.Entity<Booking>()
+            .HasOne(x => x.ParkingReservation)
+            .WithOne(x => x.Booking)
+            .HasForeignKey<ParkingReservation>(x => x.BookingId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+
+        // Booking -> Payment
+        modelBuilder.Entity<Booking>()
+            .HasOne(x => x.Payment)
+            .WithOne(static x => x.Booking)
+            .HasForeignKey<Payment>(x => x.BookingId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+
+        // ParkingReservation -> ParkingSlot
+        // NoAction fixes SQL Server multiple cascade paths
+        modelBuilder.Entity<ParkingReservation>()
+            .HasOne(x => x.ParkingSlot)
+            .WithMany()
+            .HasForeignKey(x => x.ParkingSlotId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+
+        // BookingSeat -> Seat
+        modelBuilder.Entity<BookingSeat>()
+            .HasOne(x => x.Seat)
+            .WithMany()
+            .HasForeignKey(x => x.SeatId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+=======
         modelBuilder.Entity<ParkingReservation>()
             .Property(x => x.ReservedFee)
             .HasPrecision(18, 2);
+>>>>>>> origin/master
 
         base.OnModelCreating(modelBuilder);
     }

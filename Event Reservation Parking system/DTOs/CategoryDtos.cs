@@ -1,5 +1,6 @@
 namespace EventParkingReservationSystem.DTOs;
+<<<<<<< Updated upstream
 
-public record CategoryDto
-{
-}
+=======
+>>>>>>> Stashed changes
+public record CategoryDto(string Name);

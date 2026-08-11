@@ -2,6 +2,10 @@ namespace EventParkingReservationSystem.Models;
 
 public class Customer
 {
+<<<<<<< HEAD
+    public string Email { get; set; }
+}
+=======
     public int Id { get; set; }
 
     public string Name { get; set; } = string.Empty;
@@ -31,3 +35,4 @@ public class Customer
     public ICollection<Booking> Bookings { get; set; }
         = new List<Booking>();
 }
+>>>>>>> origin/master

@@ -2,6 +2,16 @@ namespace EventParkingReservationSystem.Models;
 
 public class Booking
 {
+<<<<<<< HEAD
+    internal int EventId;
+
+    public string Status { get; internal set; }
+    public object CustomerId { get; internal set; }
+    public object? BookingNumber { get; internal set; }
+    public ParkingReservation? ParkingReservation { get; set; }
+    public Payment? Payment { get; set; }
+
+=======
     public int Id { get; set; }
     public string BookingNumber { get; set; } = string.Empty;
     public int CustomerId { get; set; }
@@ -14,4 +24,5 @@ public class Booking
     public ICollection<BookingSeat> BookingSeats { get; set; } = new List<BookingSeat>();
     public ParkingReservation? ParkingReservation { get; set; }
     public Payment? Payment { get; set; }
+>>>>>>> origin/master
 }
